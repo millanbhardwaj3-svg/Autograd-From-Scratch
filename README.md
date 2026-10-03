@@ -15,9 +15,9 @@ Backpropagation and a small neural net built from scratch in Python, with no ML 
 - **The stale gradients.** Forward, backward and update all have to happen every iteration, and micrograd accumulates gradients rather than replacing them, so they need zeroing first.
 
 
-- ""Dying ReLU, output layer.""  tried ReLU as the final activation, asked for a target of -1, got 0 back. ReLU floors at zero so it can't reach negative targets. Fixed by making the last layer skip activation entirely (linear output), hidden layers keep ReLU.
+- **Dying ReLU, output layer.**  tried ReLU as the final activation, asked for a target of -1, got 0 back. ReLU floors at zero so it can't reach negative targets. Fixed by making the last layer skip activation entirely (linear output), hidden layers keep ReLU.
 
-- ""Dead ReLU"", (whole network) scaled up the training data and the network stopped learning entirely, loss frozen bit-for-bit across 900 steps. Bigger inputs pushed pre-activations hard negative on every example, killing every hidden neuron so the network collapsed to predicting one constant (the mean of the targets, confirmed by hand). Fixed by scaling inputs down before training.
+- **Dead ReLU (whole network).** scaled up the training data and the network stopped learning entirely, loss frozen bit-for-bit across 900 steps. Bigger inputs pushed pre-activations hard negative on every example, killing every hidden neuron so the network collapsed to predicting one constant (the mean of the targets, confirmed by hand). Fixed by scaling inputs down before training.
 
 ## Running it
 
