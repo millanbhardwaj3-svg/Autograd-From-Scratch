@@ -10,7 +10,7 @@ Backpropagation and a small neural net built from scratch in Python, with no ML 
 
 ## Things that went wrong
 
-- **tanh saturation (output layer).** tanh caps predictions in (-1, 1), so targets outside that range — like a target of -3.0 — are structurally unreachable, no matter how long training runs. On top of that, as tanh's output gets pushed toward ±1, its derivative (`1 - tanh(x)²`) shrinks toward zero, so the more saturated a neuron gets, the weaker its gradient signal becomes — learning slows down right when the network is already struggling to hit the target. Eventually fixed by making the output layer linear (no activation at all).
+- **tanh saturation (output layer).** tanh caps predictions in (-1, 1), so targets outside that range (like a target of -3.0) are structurally unreachable no matter how long training runs. On top of that as tanh's output gets pushed toward ±1, its derivative (`1 - tanh(x)²`) shrinks toward zero, so the more saturated a neuron gets, the weaker its gradient signal becomes — learning slows down right when the network is already struggling to hit the target. Eventually fixed by making the output layer linear (no activation at all).
 
 - **The stale gradients.** Forward, backward and update all have to happen every iteration, and micrograd accumulates gradients rather than replacing them, so they need zeroing first.
 
